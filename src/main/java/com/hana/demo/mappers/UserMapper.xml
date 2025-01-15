@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hana.demo.mappers.UserMapper">
+
+    <resultMap id="userResultMap" type="com.hana.demo.models.entity.User">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+        <result column="c_time" property="ctime" />
+        <result column="m_time" property="mtime" />
+    </resultMap>
+
+    <select id="getUserById" parameterType="java.lang.Long" resultMap="userResultMap">
+        SELECT id, name, password, c_time, m_time FROM t_user
+        WHERE
+            id = #{id} 
+    </select>
+
+    <select id="getUsersByName" parameterType="java.lang.String" resultMap="userResultMap">
+        SELECT id, name, password, c_time, m_time FROM t_user
+        WHERE
+            name = #{name}
+    </select>
+
+    <insert id="insertUser" parameterType="com.hana.demo.models.entity.User">
+        INSERT INTO t_user(name, password, c_time, m_time)
+        VALUES
+        (#{name}, #{password}, now(), now())
+    </insert>
+
+    <update id="updateUser" parameterType="com.hana.demo.models.entity.User">
+        UPDATE t_user
+        <set>
+            <if test="name != null"> name = #{name}, </if>
+            <if test="password != null"> password = #{password}, </if>
+            m_time = now()
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="java.lang.Long">
+        DELETE FROM t_user WHERE id = #{id}
+    </delete>
+
+</mapper>
