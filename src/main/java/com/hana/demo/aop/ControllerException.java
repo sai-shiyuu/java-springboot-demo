@@ -19,12 +19,10 @@ public class ControllerException {
         return new ResponseEntity<>("An error occurred: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    // You can add more exception handlers for specific exceptions
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<String> handleNullPointerException(NullPointerException ex, WebRequest request) {
         logger.error("NullPointerException: {}", ex.getMessage(), ex);
         return new ResponseEntity<>("Null pointer exception occurred: " + ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    // Add more handlers as needed
 }
