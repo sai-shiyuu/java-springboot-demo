@@ -6,6 +6,7 @@ This is a web application built using the Java programming language and Spring b
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Quartz Cron Expression](#quartz-cron-expression)
 - [Features](#features)
 - [License](#license)
 
@@ -61,6 +62,33 @@ API test file
 ```
 test/java/com/hana/demo/request.http
 ```
+
+## Quartz Cron Expression
+Fields: Quartz cron expressions have 6 or 7 fields:
+
+Seconds Minutes Hours Day-of-Month Month Day-of-Week [Year]
+
+    Seconds: 0-59
+    Minutes: 0-59
+    Hours: 0-23
+    Day-of-Month: 1-31
+    Month: 1-12 or JAN-DEC
+    Day-of-Week: 0-6 (Sunday = 0 or 7) or SUN-SAT
+    Year: (Optional) - usually 4 digits
+
+Special Characters: Quartz supports a wide range of special characters:
+
+    *: All values
+    ?: No specific value (used for Day-of-Month or Day-of-Week when one is specified)
+    -: Range
+    ,: List
+    /: Increment
+    L: Last day of the month or last specific day of the week in a month
+    W: Nearest weekday to the specified day
+    #: nth day of the week in a month
+
+Example: 0 0 10 ? * MON-FRI (Every weekday at 10:00 AM)
+
 ## Features
 
 - Protocol: http
@@ -68,7 +96,7 @@ test/java/com/hana/demo/request.http
 - Cache: Redis
 - Logging: log4j2
 - Password encrypt: sha256
-- Job: quartz(waitting)
+- Job: quartz
 
 ## License
 
