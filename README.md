@@ -63,6 +63,17 @@ API test file
 test/java/com/hana/demo/request.http
 ```
 
+To run the application in docker, change the IP address of MariaDB and Redis
+```
+spring.datasource.url
+spring.redis.host
+```
+after that, execute the following command in project root:
+
+```
+docker build -t spring-demo .
+docker run -p 8080:8080 -d spring-demo
+```
 ## Quartz Cron Expression
 Fields: Quartz cron expressions have 6 or 7 fields:
 
