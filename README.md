@@ -63,12 +63,7 @@ API test file
 test/java/com/hana/demo/request.http
 ```
 
-To run the application in docker, change the IP address of MariaDB and Redis
-```
-spring.datasource.url
-spring.redis.host
-```
-after that, execute the following command in project root:
+To run the application in docker, execute the following command in project root:
 
 ```
 docker build -t spring-demo .
