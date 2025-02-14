@@ -98,7 +98,7 @@ Example: 0 0 10 ? * MON-FRI (Every weekday at 10:00 AM)
 ## Features
 
 - Protocol: http
-- Database connection: MariaDB by Mybatis
+- Database connection: MariaDB with Mybatis
 - Cache: Redis
 - Logging: log4j2
 - Password encrypt: sha256
