@@ -18,12 +18,9 @@ public class RedisConfig {
     private int redisPort;
 
     @Bean
-    public RedisConnectionFactory redisConnectionFactory() {
-        var lcf = new LettuceConnectionFactory();
-        lcf.setHostName(redisHost);
-        lcf.setPort(redisPort);
-        return lcf;
-    }
+public RedisConnectionFactory redisConnectionFactory() {
+    return new LettuceConnectionFactory(redisHost, redisPort);
+}
 
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
